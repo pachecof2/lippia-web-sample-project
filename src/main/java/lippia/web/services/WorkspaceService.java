@@ -6,7 +6,7 @@ import junit.framework.Assert;
 import lippia.web.constants.LoginPageConstants;
 import lippia.web.constants.WorkspaceConstants;
 
-import static lippia.web.constants.WorkspaceConstants.INPUT_WORKSPACE_NAME_EDIT;
+import static lippia.web.constants.WorkspaceConstants.*;
 import static lippia.web.services.LandingPageService.clickOnLogIn;
 import static lippia.web.services.LandingPageService.navegarWeb;
 import static lippia.web.services.LoginPageService.*;
@@ -57,7 +57,14 @@ public class WorkspaceService extends ActionManager {
     }
 
     public static void validateWorkspaceCreated(String name){
-        WebActionManager.waitVisibility(WorkspaceConstants.NAME_WORKSPACE, name);
-        Assert.assertTrue(isPresent(WorkspaceConstants.NAME_WORKSPACE, name));
+        WebActionManager.waitVisibility(NAME_WORKSPACE, name);
+        Assert.assertTrue(isPresent(NAME_WORKSPACE, name));
+    }
+
+    public static void validateWorkspaceName(String expectedName) {
+        String newName = WebActionManager.getText(INPUT_WORKSPACE_NAME_EDIT);
+        System.out.println(newName);
+        WebActionManager.waitVisibility(WorkspaceConstants.NAME_WORKSPACE_EDITED);
+        Assert.assertEquals(NAME_WORKSPACE_EDITED, expectedName, newName);
     }
 }

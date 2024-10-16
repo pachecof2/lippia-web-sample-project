@@ -2,7 +2,7 @@
 @Smoke
 Feature: Crear Workspace
 
-  @CreateWorkspace
+  @Smoke
   Scenario Outline: Crear un workspace exitosamente
     Given el usuario ingresa exitosamente al dashboard de Clockify con el email 'test.register2@yopmail.fr' y la contraseña '123456'
     When el usuario accede a la sección 'Manage workspaces'
@@ -16,7 +16,7 @@ Feature: Crear Workspace
       | Automation Workspace        |
 
 
-  @EditWorkspace
+  @Smoke
   Scenario Outline: Editar nombre un workspace exitosamente
     Given el usuario ingresa exitosamente al dashboard de Clockify con el email 'test.register@yopmail.fr' y la contraseña '123456'
     When el usuario accede a la sección 'Manage workspaces'

@@ -28,7 +28,7 @@
 		<!-- cucumber options -->
 		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
 		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
-		<cucumber.tags>@CreateProject</cucumber.tags>
+		<cucumber.tags>@Smoke</cucumber.tags>
 		<pretty.plugin>--plugin pretty</pretty.plugin>
 		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
 		<test-manager.report>--plugin lippia.web.reporters.TestManagerReporter:</test-manager.report>
@@ -119,7 +119,7 @@
 		<dependency>
 			<groupId>io.lippia</groupId>
 			<artifactId>core</artifactId>
-			<version>3.3.0.0</version>
+			<version>3.3.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.lippia.report</groupId>
