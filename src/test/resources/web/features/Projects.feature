@@ -1,4 +1,4 @@
-@Projects @TPFinal
+@Projects @Regression  @TestFabi
 Feature: Projects
 
   Background:

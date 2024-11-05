@@ -1,5 +1,4 @@
-
-@Login @TPFinal
+@Login @Regression @TestFabi
 Feature: Login
 
   Background:
