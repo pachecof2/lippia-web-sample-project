@@ -1,30 +1,29 @@
 
-@Smoke
-Feature: Crear Workspace
+ @Workspace @TPFinal
+Feature: Workspace
 
-  @Smoke
-  Scenario Outline: Crear un workspace exitosamente
-    Given el usuario ingresa exitosamente al dashboard de Clockify con el email 'test.register2@yopmail.fr' y la contraseña '123456'
-    When el usuario accede a la sección 'Manage workspaces'
-    And hace clic en el botón 'Create new workspace'
-    And ingresa '<nombreBase>' en el campo 'Workspace name'
-    And hace clic en el botón 'Create'
-    Then se crea exitosamente el nuevo workspace con un nombre basado en '<nombreBase>'
+  @CreateWorkspace
+  Scenario Outline: Create a workspace Successfully
+    Given the user successfully logs into the dashboard with the email 'test.register2@yopmail.fr' and the password '123456'
+    When the user accesses the 'Manage workspaces' section
+    And clicks on the 'Create new workspace' button
+    And enters '<nombreBase>' in the 'Workspace name' field
+    And clicks on the 'Create' button
+    Then the new workspace is successfully created with a name based on '<nombreBase>'
 
     Examples:
       | nombreBase                  |
       | Automation Workspace        |
 
 
-  @Smoke
-  Scenario Outline: Editar nombre un workspace exitosamente
-    Given el usuario ingresa exitosamente al dashboard de Clockify con el email 'test.register@yopmail.fr' y la contraseña '123456'
-    When el usuario accede a la sección 'Manage workspaces'
-    And hace clic en el botón 'Settings'
-    And ingresa '<nombreBase>' en el campo 'Workspace name' para editar
-    And hace clic en el navbar
-    Then actualiza exitosamente el nombre del workspace
+  @EditWorkspace
+  Scenario Outline: Edit a workspace name Successfully
+    Given the user successfully logs into the dashboard with the email 'test.register@yopmail.fr' and the password '123456'
+    When the user accesses the 'Manage workspaces' section
+    And clicks on the 'Settings' button
+    And enters '<nombreBase>' in the 'Workspace name' field to edit
+    Then the workspace name is successfully updated to '<nombreBase>'
 
     Examples:
       | nombreBase |
-      | edit       |
+      | Lippia web |

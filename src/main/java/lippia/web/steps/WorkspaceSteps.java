@@ -3,66 +3,60 @@ package lippia.web.steps;
 import com.crowdar.core.PageSteps;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import lippia.web.services.WorkspaceService;
+
+import java.util.UUID;
 
 
 public class WorkspaceSteps extends PageSteps {
+    private String uniqueWorkspaceName;
 
-        private String originalName; // Almacena el nombre original
-
-        @Given("el usuario ingresa exitosamente al dashboard de Clockify con el email '(.*)' y la contraseña '(.*)'")
-        public void DashboardDeClockify(String email, String pass) {
-            WorkspaceService.realizarLogin(email, pass);
-        }
-
-        @When("el usuario accede a la sección 'Manage workspaces'")
-        public void elUsuarioAccedeALaSeccionManageWorkspaces() {
+        @When("the user accesses the 'Manage workspaces' section")
+        public void loginToManageWorkspaces() {
             WorkspaceService.worskpaceDropdown();
             WorkspaceService.worskpaceManage();
         }
 
-        @And("hace clic en el botón 'Create new workspace'")
-        public void haceClicEnElBotonCreateNewWorkspace() {
+        @And("clicks on the 'Create new workspace' button")
+        public void clickOnNewWorkspaceButton() {
+
             WorkspaceService.clickOncreateNew();
         }
 
-        @And("ingresa '(.*)' en el campo 'Workspace name'")
-        public void nombreNewWorkspace(String nombreBase) {
-            this.originalName = nombreBase; // Guarda el nombre original
-            WorkspaceService.inputWorkspace(nombreBase);
+        @And("enters '(.*)' in the 'Workspace name' field")
+        public void setNameWorkspace(String nombreBase) {
+            uniqueWorkspaceName = nombreBase + "_" + UUID.randomUUID().toString().substring(0, 8);
+            WorkspaceService.inputWorkspace(uniqueWorkspaceName);
         }
 
-        @And("hace clic en el botón 'Create'")
-        public void haceClicEnElBotonCreate() {
+        @And("clicks on the 'Create' button")
+        public void createNewWorkspace() throws InterruptedException {
             WorkspaceService.createButton();
         }
 
-        @Then("se crea exitosamente el nuevo workspace con un nombre basado en '(.*)'")
-        public void seCreaExitosamenteElNuevoWorkspaceConNombreBasadoEn(String name) {
-            WorkspaceService.validateWorkspaceCreated(name);
+        @Then("the new workspace is successfully created with a name based on '(.*)'")
+        public void validateNewWorkspaceCreated(String name) {
+            WorkspaceService.validateWorkspaceCreated(uniqueWorkspaceName);
+
         }
 
-        @And("hace clic en el botón 'Settings'")
-        public void haceClicEnElBotonSettings() {
+        @And("clicks on the 'Settings' button")
+        public void loginToSettings() {
+
             WorkspaceService.clickSettings();
         }
 
-        @And("ingresa '(.*)' en el campo 'Workspace name' para editar")
-        public void nombreEditWorkspace(String nuevoNombre) {
-            WorkspaceService.inputEditWorkspace(nuevoNombre);
-        }
+        @And("enters '(.*)' in the 'Workspace name' field to edit")
+        public void setNewWorkspaceName(String nuevoNombre) {
 
-        @And("hace clic en el navbar")
-        public void haceClicEnElNavbar() {
+            WorkspaceService.inputEditWorkspace(nuevoNombre);
             WorkspaceService.worskpaceDropdown();
         }
 
-        @Then("actualiza exitosamente el nombre del workspace")
-        public void actualizaAexitosamenteElNombreDelWorkspace() {
-            WorkspaceService.validateWorkspaceName(originalName);
+        @Then("the workspace name is successfully updated to '(.*)'")
+        public void validateNewWorkspaceName(String newName) {
+            WorkspaceService.validateWorkspaceName(newName);
         }
     }

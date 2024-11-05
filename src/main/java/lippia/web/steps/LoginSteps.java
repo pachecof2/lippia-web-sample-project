@@ -1,62 +1,61 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.actions.WebActionManager;
 import io.cucumber.java.en.*;
-import lippia.web.constants.LandingPageConstants;
-import lippia.web.constants.LoginPageConstants;
 import lippia.web.services.LandingPageService;
 import lippia.web.services.LoginPageService;
-import org.openqa.selenium.WebDriver;
+
 
 public class LoginSteps extends PageSteps {
 
-    @Given("El usuario está en la página de inicio de Clockify")
+    @Given("The user is on the Clockify homepage")
     public void home() {
-        LandingPageService.navegarWeb();
+        LandingPageService.navigateWeb();
     }
 
-    @And("ingresa a la seccion 'Log In'")
-    public void ingresaALaSeccionLogIn() {
-        LandingPageService.clickOnLogIn();
+    @And("navigates to the 'Log In' section")
+    public void navigatesToTheLoginSection() {
+        LandingPageService.clickOnLogIn(); //
     }
 
-    @When("El usuario selecciona la opción 'Log in manually'")
-    public void ingresaALaSeccionManually() {
-        LoginPageService.clikOnManually();
+    @When("The user selects the 'Log in manually' option")
+    public void selectsLogInManuallyOption() {
+        LoginPageService.clickOnManually();
     }
 
-    @And("Ingresa '(.*)' en el campo 'Enter email'")
-    public void ingresaEnElCampoEmail(String email) {
+    @And("Enters '(.*)' in the 'Enter email' field")
+    public void entersEmail(String email) {
         LoginPageService.setEmail(email);
-
     }
 
-    @And("Ingresa '(.*)' en el campo 'Enter password'")
-    public void ingresaEnElCampoPassword(String pass) {
+    @And("Enters '(.*)' in the 'Enter password' field")
+    public void setPassword(String pass) {
         LoginPageService.setPassword(pass);
-
     }
-    @And("Presiona el botón 'Log In'")
-    public void presionaElBotonLogIn() {
+
+    @And("Presses the 'Log In' button")
+    public void pressesLogInButton() {
         LoginPageService.clickOnLogInButton();
     }
-    @Then("El usuario ingresa exitosamente al dashboard de Clockify")
-    public static void verifyDashboard() {
 
+    @Then("The user successfully logs into the Clockify dashboard")
+    public static void verifyDashboard() {
+        LoginPageService.verifyDashboard();
     }
-    @Then("Se visualiza alerta '(.*)' indicando que el correo es inválido")
-    public void seVisualizaAlertaEmail(String alert) {
+
+    @Then("An alert '(.*)' is displayed indicating that the email is invalid")
+    public void verifyEmailAlert(String alert) {
         LoginPageService.verifyAlertEmail(alert);
     }
-    @Then("Se visualiza alerta '(.*)' indicando que la contraseña es incorrecta")
-    public void seVisualizaAlertaPass(String alert) {
-        LoginPageService.verifyAlertPass(alert);
+
+    @Then("An alert '(.*)' is displayed indicating that the password is incorrect")
+    public void verifyPasswordAlert(String alert) {
+        LoginPageService.verifyAlertPassword(alert);
     }
-    @And("Presiona el botón 'Log Out'")
-    public void presionaElBotonLogOut() {
+
+    @And("Presses the 'Log Out' button")
+    public void pressesLogOutButton() {
         LoginPageService.clickOnDropdown();
         LoginPageService.clickOnLogOutButton();
-
-}
+    }
 }

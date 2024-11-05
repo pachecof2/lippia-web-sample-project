@@ -1,7 +1,4 @@
 package lippia.web.constants;
-
-import org.openqa.selenium.WebElement;
-
 public class LoginPageConstants {
 
     public static final String BUTTON_LOG_IN_MANUALLY = "xpath://*[@data-test-id='login-manual']";
@@ -12,5 +9,6 @@ public class LoginPageConstants {
     public static final String ALERT_MESSAGE_PASSWORD ="xpath://div[contains(@class, 'cl-invalid-feedback')]";
     public static final String DROPDOWN ="xpath://*[@class='cl-p-0 cl-dropdown-toggle cl-no-arrow cl-d-flex']";
     public static final String BUTTON_LOG_OUT = "xpath://*[@id='topbar-menu']/div/div[2]/div/app-user-settings/div/div/div[1]/a";
+    public static final String DASHBOARD = "xpath://div[@class='cl-d-flex cl-align-items-center']/span[@class='cl-nav-link-copy']";
 
 }

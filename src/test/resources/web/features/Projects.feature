@@ -1,19 +1,18 @@
-@Smoke @CreateProject
-Feature: Crear Proyecto
-
+@Projects @TPFinal
+Feature: Projects
 
   Background:
+    Given the user successfully logs into the dashboard with the email 'test.register@yopmail.fr' and the password '123456'
 
-    Given el usuario ingresa exitosamente al dashboard con el email 'test.register@yopmail.fr' y la contraseña '123456'
-
-  @CreateProject @Fabi
-  Scenario Outline: Crear un Proyecto exitosamente
-    When hace clic en el botón 'Create Project'
-    And hace clic en el botón 'Create new project'
-    And ingresa '<nombreBase>' en el campo 'Project name'
-    And hace clic en el botón 'Create' Project
-    Then se crea exitosamente el nuevo Project con un nombre basado en '<nombreBase>'
+  @CreateProject
+  Scenario Outline: Create a project successfully
+    When clicks on the 'Create Project' button
+    And clicks on the 'Create new project' button
+    And enters '<nombreBase>' in the 'Project name' field
+    And user clicks on the 'Create' button
+    Then the new project is successfully created with a name based on '<nombreBase>'
+    And an alert 'Project '<nombreBase>' has been created' is displayed
 
     Examples:
       | nombreBase           |
-      | Automation Workspace 2s|
+      | Automation Workspace 1|

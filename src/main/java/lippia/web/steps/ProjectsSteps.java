@@ -1,44 +1,52 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.actions.WebActionManager;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lippia.web.services.ProjectService;
-import lippia.web.services.WorkspaceService;
+
+import java.util.UUID;
 
 public class ProjectsSteps extends PageSteps {
 
-    @Given("el usuario ingresa exitosamente al dashboard con el email '(.*)' y la contraseña '(.*)'")
-    public void DashboardDeClockify(String email, String pass) {
+    private String uniqueProjectName;
 
-        ProjectService.realizarLogin(email, pass);
+    @When("clicks on the 'Create Project' button")
+    public void clickOnCreateProject() {
+        ProjectService.clickButtonProject();
     }
 
-    @When("hace clic en el botón 'Create Project'")
-    public void haceClicEnElBotonCreateProject() {
-        ProjectService.clickbuttonProject();
+    @And("clicks on the 'Create new project' button")
+    public void clickOnCreateNewProject() {
+
+        ProjectService.clickButtonNewProject();
     }
 
-    @And("hace clic en el botón 'Create new project'")
-    public void ingresaEnElCampoProjectName() {
-        ProjectService.clickbuttonNewProject();
-    }
+    @And("enters '(.*)' in the 'Project name' field")
+    public void setProjectName(String nombreBase) {
+        // Usando UUID para generar un nombre único
 
-    @And("ingresa '(.*)' en el campo 'Project name'")
-    public void haceClicEnElBotonCreateNewProject(String name) {
-        ProjectService.inputProject(name);
+        uniqueProjectName = nombreBase + "_" + UUID.randomUUID().toString();
+
+        // Llamar al servicio con el nombre generado
+        ProjectService.inputProject(uniqueProjectName);
+
     }
-    @And("hace clic en el botón 'Create' Project")
-    public void haceClicEnElBotonCreateConfirm() {
+    @And("user clicks on the 'Create' button")
+    public void confirmCreationButton() {
+
         ProjectService.clickOnCreate();
     }
 
-    @Then("se crea exitosamente el nuevo Project con un nombre basado en '(.*)'")
-    public void seCreaExitosamenteElNuevoProjectConUnNombreBasadoEn() {
-        ProjectService.clickbuttonProject();
-       //ProjectService.alertCreate();
+    @Then("the new project is successfully created with a name based on '(.*)'")
+    public void validateNewProjectName(String name) { //Se deja la variable definida porque en gherkin tenemos dicha definicion
+        ProjectService.validateNameProject(uniqueProjectName);
     }
+    @And("an alert 'Project '(.*)' has been created' is displayed")
+    public void validateAlert(String name) {
+        ProjectService.validateAlertSucessfully("Project " + uniqueProjectName + " has been created");
+
+    }
+
 }

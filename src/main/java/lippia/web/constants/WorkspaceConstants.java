@@ -10,5 +10,5 @@ public class WorkspaceConstants {
     public static final String BUTTON_SETTING = "xpath://*[@class='cl-btn cl-btn-primary cl-ml-3 cl-d-print-none']";
     public static final String INPUT_WORKSPACE_NAME_EDIT ="xpath://*[@id='workspaceName']";
     public static final String NAME_WORKSPACE = "xpath://span[contains(text(),'%s')]";
-    public static final String NAME_WORKSPACE_EDITED ="xpath://*[@id='topbar-menu']/div/div[1]/div[3]/div/p";
+    public static final String ALERT = "xpath://div[contains(@class, 'toast-title')]";
 }

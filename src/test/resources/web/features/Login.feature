@@ -1,51 +1,38 @@
 
-@Smoke @Login
-Feature: Inicio de Sesion
-
+@Login @TPFinal @Fabi
+Feature: Login
 
   Background:
 
-    Given El usuario está en la página de inicio de Clockify
-    And ingresa a la seccion 'Log In'
+    Given The user is on the Clockify homepage
+    And navigates to the 'Log In' section
 
-@LoginSuccess
-  Scenario: Realizar inicio de sesión manualmente exitosamente
-    When El usuario selecciona la opción 'Log in manually'
-    And Ingresa 'test.register@yopmail.fr' en el campo 'Enter email'
-    And Ingresa '123456' en el campo 'Enter password'
-    And Presiona el botón 'Log In'
-    Then El usuario ingresa exitosamente al dashboard de Clockify
+  @LoginSuccess
+  Scenario: Successfully log in manually
+    When The user selects the 'Log in manually' option
+    And Enters 'test.register@yopmail.fr' in the 'Enter email' field
+    And Enters '123456' in the 'Enter password' field
+    And Presses the 'Log In' button
+    Then The user successfully logs into the Clockify dashboard
 
   @LoginFailed
-  Scenario Outline: Iniciar sesión con correo inválido y contraseña correcta
-    When El usuario selecciona la opción 'Log in manually'
-    And Ingresa '<email>' en el campo 'Enter email'
-    And Ingresa '<password>' en el campo 'Enter password'
-    And Presiona el botón 'Log In'
-    Then Se visualiza alerta '<alert>' indicando que el correo es inválido
+  Scenario Outline: Log in with invalid email and correct password
+    When The user selects the 'Log in manually' option
+    And Enters '<email>' in the 'Enter email' field
+    And Enters '<password>' in the 'Enter password' field
+    And Presses the 'Log In' button
+    Then An alert '<alert>' is displayed indicating that the email is invalid
 
     Examples:
       | email                   | password | alert                     |
-      | test.registeryopmail.fr | 123456   | Email format is not valid |
-      | test.                   | 123456   | Email format is not valid |
-
-  @LoginFailed
-  Scenario Outline: Iniciar sesión con correo válido y contraseña incorrecta
-    When El usuario selecciona la opción 'Log in manually'
-    And Ingresa '<email>' en el campo 'Enter email'
-    And Ingresa '<password>' en el campo 'Enter password'
-    And Presiona el botón 'Log In'
-    Then Se visualiza alerta '<alert>' indicando que la contraseña es incorrecta
-
-    Examples:
-      | email                    | password | alert                     |
-      | Test.Register@yopmail.fr | 12345678 | Invalid email or password |
+      | test.registeryopmail.fr  | 123456   | Email format is not valid |
+      | test.                    | 123456   | Email format is not valid |
 
   @LogOut
-  Scenario: Realizar logout exitosamente
-    When El usuario selecciona la opción 'Log in manually'
-    And Ingresa 'test.register@yopmail.fr' en el campo 'Enter email'
-    And Ingresa '123456' en el campo 'Enter password'
-    And Presiona el botón 'Log In'
-    And Presiona el botón 'Log Out'
-    Then El usuario está en la página de inicio de Clockify
+  Scenario: Successfully log out
+    When The user selects the 'Log in manually' option
+    And Enters 'test.register@yopmail.fr' in the 'Enter email' field
+    And Enters '123456' in the 'Enter password' field
+    And Presses the 'Log In' button
+    And Presses the 'Log Out' button
+    Then The user is on the Clockify homepage

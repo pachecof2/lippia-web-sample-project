@@ -10,7 +10,7 @@ import static com.crowdar.core.actions.WebActionManager.navigateTo;
 
 public class LandingPageService extends ActionManager {
 
-    public static void navegarWeb(){
+    public static void navigateWeb(){
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
 
