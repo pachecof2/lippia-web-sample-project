@@ -10,10 +10,11 @@ import static lippia.web.constants.WorkspaceConstants.*;
 public class WorkspaceService extends ActionManager {
 
      public static void worskpaceDropdown(){
-        WebActionManager.click(WorkspaceConstants.DROPDOWN_PROFILE);
+
+         WebActionManager.click(WorkspaceConstants.DROPDOWN_PROFILE);
  }
 
-    public static void worskpaceManage() {
+     public static void worskpaceManage() {
 
          WebActionManager.click(WorkspaceConstants.WORKSPACE_MANAGER);
     }
