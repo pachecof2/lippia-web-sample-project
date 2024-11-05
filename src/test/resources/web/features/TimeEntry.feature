@@ -1,4 +1,4 @@
-@TimeEntry @TPFinal
+@TimeEntry @Regression @TestFabi
 Feature: Time Entry
 
   Background:

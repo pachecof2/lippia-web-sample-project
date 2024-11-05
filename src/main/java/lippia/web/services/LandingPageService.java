@@ -14,7 +14,7 @@ public class LandingPageService extends ActionManager {
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
 
-    public static void clickOnLogIn() {
-        WebActionManager.click(LandingPageConstants.BUTTON_LOG_IN);
+    public static void clickOnSignIn() {
+        WebActionManager.click(LandingPageConstants.BUTTON_SIGN_IN);
     }
 }

@@ -15,7 +15,7 @@ public class LoginSteps extends PageSteps {
 
     @And("navigates to the 'Log In' section")
     public void navigatesToTheLoginSection() {
-        LandingPageService.clickOnLogIn(); //
+        LandingPageService.clickOnSignIn();
     }
 
     @When("The user selects the 'Log in manually' option")

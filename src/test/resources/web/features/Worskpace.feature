@@ -1,5 +1,4 @@
-
- @Workspace @TPFinal
+@Workspace @Regression @TestFabi
 Feature: Workspace
 
   @CreateWorkspace

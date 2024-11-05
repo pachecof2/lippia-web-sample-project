@@ -3,7 +3,7 @@ package lippia.web.services;
 import com.crowdar.core.actions.WebActionManager;
 import io.cucumber.java.en.Given;
 
-import static lippia.web.services.LandingPageService.clickOnLogIn;
+import static lippia.web.services.LandingPageService.clickOnSignIn;
 import static lippia.web.services.LandingPageService.navigateWeb;
 import static lippia.web.services.LoginPageService.*;
 import static lippia.web.services.LoginPageService.clickOnLogInButton;
@@ -13,7 +13,7 @@ public class CommonSteps {
     @Given("the user successfully logs into the dashboard with the email {string} and the password {string}")
     public static void loginSucessfully(String email, String pass) {
         navigateWeb();
-        clickOnLogIn();
+        clickOnSignIn();
         clickOnManually();
         setEmail(email);
         setPassword(pass);
