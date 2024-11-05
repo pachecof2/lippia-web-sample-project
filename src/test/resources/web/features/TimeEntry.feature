@@ -1,4 +1,4 @@
-@TimeEntry @TPFinal @Fabi
+@TimeEntry @TPFinal
 Feature: Time Entry
 
   Background:

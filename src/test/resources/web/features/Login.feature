@@ -1,5 +1,5 @@
 
-@Login @TPFinal @Fabi
+@Login @TPFinal
 Feature: Login
 
   Background:
